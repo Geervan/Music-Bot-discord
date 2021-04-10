@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
 
     if(!args[0]) return message.channel.send('Nothing is playing literally nothing')
     let channel = message.member.voice.channel;
-    if(!channel) return message.channel.send('First join a vc then I will play chatta fellow')
+    if(!channel) return message.channel.send('You have to be in a **Voice channel** to use this command')
 
     if (!channel.permissionsFor(message.client.user).has("CONNECT")) return message.channel.send('I don\'t have permission to join the voice channel')
     if (!channel.permissionsFor(message.client.user).has("SPEAK"))return message.channel.send('I don\'t have permission to speak in the voice channel')
@@ -63,7 +63,7 @@ exports.run = async (client, message, args) => {
         if (!song) {
             queue.voiceChannel.leave();
             message.client.queue.delete(message.guild.id);
-            message.channel.send('There are no songs in queue, Sone ka samay aa gaya')
+            message.channel.send('There are no songs in queue')
             return;
         }
 
